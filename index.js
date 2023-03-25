@@ -262,6 +262,10 @@
   function showBoard(){
     deal.dealCard(4, 0 [player, dealer, player, dealer])
   }
+
+  function showAlert(msg){
+      $("#alert span").html(`<strong>${msg}</strong>`)
+  }
   function Game() {
     this.newGame = function () {
       let wager = $.trim($("#wager").val());
