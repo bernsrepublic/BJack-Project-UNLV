@@ -43,6 +43,10 @@
       wager += parseInt(money, 0);
     };
 
+    this.setWager = function(){
+      wager += parseInt(money, 0);
+    }
+
     this.resetWager = function () {
       wager = 0;
     };
@@ -129,6 +133,26 @@
     }
   }
 
+  function Shuffle(deck){
+    let set = deck.getDeck(),
+        shuffled = [],
+        card;
+
+        this.setShuffle = function(){
+          while(set.lenght > 0){
+            card = Math.floor(Math.random() * set.length);
+
+            shuffled.push(set[card])
+            set.splice(card, 1);
+          }
+          return shuffled;
+        }
+
+        this.getShuffle = function(){
+          return this.setShuffle();
+        }
+  }
+
   function Card(card){
     this.getRank = function(){
       return card.rank;
@@ -162,9 +186,108 @@
     }
   }
 
+  function Deal(){
+    let deck = new Deck(),
+        shuffle = new Shuffle(deck),
+        shuffled = shuffle.getShuffle(),
+        card;
+
+    this.getCard = function(sender){
+      this.setCard(sender);
+      return card;
+    }
+
+    this.setCard = function(sender){
+      card = shuffled[0];
+      shuffled.splice(card, 1);
+      sender.setHand(card);
+    }
+
+    this.dealCard = function(num, i, obj){
+      if(i >= num) {return false;}
+
+      let sender = obj[i],
+          elements = obj[i].getElements(),
+          score = elements.score,
+          ele = elements.ele,
+          dhand = dealer.getHand();
+
+      deal.getCard(sender);
+
+      if(i < 3){
+        renderCard(ele, sender, "up");
+        $(score).html(sender.getScore());
+      }else{
+        renderCard(ele, sender, "down");
+      }
+
+      if(player.getHand().length <3){
+        if(dhand.length > 0 && dhand[0].rank === "A"){
+          SecurityPolicyViolationEvent("insurance");
+        }
+
+        if(player.getScore() === 21){
+          if(!blackjack){
+            blackjack = true;
+            getWinner();
+          }else{
+            dealer.flipCard();
+            $("#dscore span").html(dealer.getScore());
+          }
+        }else{
+          if(dhand.length > 1){
+            setActions("run");
+          }
+        }
+      }
+
+      function showCards(){
+        setTimeout(function(){
+          deal.dealCard(num, i + 1, obj);
+        }, 500);
+      }
+
+      clearTimeout(showCards());
+
+    }   
+  }
+
+  function resetBoard(){
+     $("#dhand").html(" ");
+     $("#phand").html(" ");
+     $("#result").html(" ");
+     $("#phand, #dhand").css("left", 0);
+  }
+
+  function showBoard(){
+    deal.dealCard(4, 0 [player, dealer, player, dealer])
+  }
   function Game() {
     this.newGame = function () {
       let wager = $.trim($("#wager").val());
+
+      player.resetWager();
+      player.resetWager(wager);
+
+      if(player.checkWager()){
+          $("#deal").pop("disabled", true);
+          resetBoard();
+          player.setCash(-wager);
+
+          deal = new Deal();
+          running = true;
+          blackjack = false;
+          insured = false;
+
+          player.resetHand();
+          dealer.resetHand();
+          showBoard();
+      }else{
+        player.setWager(-wager);
+        $(#alert).removeClass("alert-info alert-success").addClass
+        ("alert-error");
+        showAlert("Wager Cannot Exceed Available Cash")
+      }
     };
   }
 });
