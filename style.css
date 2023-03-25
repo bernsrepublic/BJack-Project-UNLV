@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(102, 1, 1);
+}
+
+#container {
+  margin: 0 auto;
+}
+
+#game {
+  background: transparent url("unlv_background.JPG") 0 0 no-repeat;
+  border-radius: 5px;
+  color: #333;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
