@@ -23,6 +23,22 @@ body {
   position: relative;
 }
 
+#actions {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  text-align-last: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #690303;
+}
+
+input#wager {
+  margin-left: 5px;
+  position: relative;
+  top: 4px;
+}
+
 #money,
 #money:before {
   border-radius: 5px;
