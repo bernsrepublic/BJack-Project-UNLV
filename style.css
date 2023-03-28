@@ -116,11 +116,15 @@ span.suit {
 #actions {
   position: absolute;
   bottom: 0;
-  left: 5%;
+  left: 17%;
   text-align: center;
   padding: 1rem 1rem;
   margin-bottom: 1rem;
+  border-radius: 5px;
   background-color: #690303;
+  border-style: solid;
+  border-color: rgb(247, 227, 141);
+  border-width: 1px;
 }
 
 input#wager {
@@ -134,18 +138,17 @@ input#wager {
   border-radius: 5px;
   top: 0;
   height: 55px;
-  padding: 7px;
+  padding: 8px;
   position: absolute;
-  right: 0;
-  width: 250px;
+  right: 15;
+  width: 175px;
+  margin-top: 40px;
+  margin-left: 40px;
 }
 
 #money {
-  border: 2px solid rgb(247, 227, 141);
-}
-
-#money:before {
-  background: #333;
+  border: 1px solid rgb(247, 227, 141);
+  background: #690303;
   content: "";
   opacity: 0.8;
 }
