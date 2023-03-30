@@ -64,11 +64,11 @@ div[class*="card"] {
   border-radius: 5px;
   box-shadow: 0 0 1px #000;
   display: inline-block;
-  height: 106px;
+  height: 150px;
   margin: 0 5px;
   position: absolute;
   right: 0;
-  width: 79px;
+  width: 100px;
 }
 
 .down {
@@ -141,7 +141,7 @@ input#wager {
   padding: 8px;
   position: absolute;
   right: 15;
-  width: 175px;
+  width: 200px;
   margin-top: 40px;
   margin-left: 40px;
 }

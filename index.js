@@ -1,5 +1,5 @@
 (function () {
-  var game = new Game(),
+  let game = new Game(),
     player = new Player(),
     dealer = new Player(),
     running = false,
@@ -8,7 +8,7 @@
     deal;
 
   function Player() {
-    var hand = [],
+    let hand = [],
       wager = 0,
       cash = 1000,
       bank = 0,
@@ -92,7 +92,7 @@
   }
 
   function Deck() {
-    var ranks = [
+    let ranks = [
         "A",
         "2",
         "3",
@@ -107,7 +107,7 @@
         "Q",
         "K",
       ],
-      suits = ["&#9824;", "&#9827;", "&#9829;", "&#9670;"],
+      suits = ["&#9824;", "&#9827;", "&#9829;", "&#9830;"],
       deck = [],
       i,
       x,
@@ -135,7 +135,7 @@
   }
 
   function Shuffle(deck) {
-    var set = deck.getDeck(),
+    let set = deck.getDeck(),
       shuffled = [],
       card;
 
@@ -165,7 +165,7 @@
     };
 
     this.getValue = function () {
-      var rank = this.getRank(),
+      let rank = this.getRank(),
         value = 0;
 
       if (rank === "A") {
@@ -185,7 +185,7 @@
   }
 
   function Deal() {
-    var deck = new Deck(),
+    let deck = new Deck(),
       shuffle = new Shuffle(deck),
       shuffled = shuffle.getShuffle(),
       card;
@@ -206,7 +206,7 @@
         return false;
       }
 
-      var sender = obj[i],
+      let sender = obj[i],
         elements = obj[i].getElements(),
         score = elements.score,
         ele = elements.ele,
@@ -253,7 +253,7 @@
 
   function Game() {
     this.newGame = function () {
-      var wager = $.trim($("#wager").val());
+      let wager = $.trim($("#wager").val());
 
       player.resetWager();
       player.setWager(wager);
@@ -284,7 +284,7 @@
   //Extensions//
 
   Player.prototype.hit = function (dbl) {
-    var pscore;
+    let pscore;
 
     deal.dealCard(1, 0, [this]);
     pscore = player.getScore();
@@ -305,7 +305,7 @@
   };
 
   Player.prototype.stand = function () {
-    var timeout = 0;
+    let timeout = 0;
 
     running = false;
     dealer.flipCards();
@@ -329,7 +329,7 @@
   };
 
   Player.prototype.dbl = function () {
-    var wager = this.getWager();
+    let wager = this.getWager();
 
     if (this.checkWager(wager * 2)) {
       $("#double").prop("disabled", true);
@@ -351,7 +351,7 @@
   };
 
   Player.prototype.insure = function () {
-    var wager = this.getWager() / 2,
+    let wager = this.getWager() / 2,
       newWager = 0;
 
     $("#insurance").prop("disabled", true);
@@ -371,7 +371,7 @@
   };
 
   Player.prototype.getScore = function () {
-    var hand = this.getHand(),
+    let hand = this.getHand(),
       score = 0,
       aces = 0,
       i;
@@ -393,7 +393,7 @@
   };
 
   Player.prototype.updateBoard = function () {
-    var score = "#dcard-0 .popover-content";
+    let score = "#dcard-0 .popover-content";
 
     if (this === player) {
       score = "#pcard-0 .popover-content";
@@ -405,7 +405,7 @@
   };
 
   Number.prototype.formatMoney = function (c, d, t) {
-    var n = this,
+    let n = this,
       s = n < 0 ? "-" : "",
       i = parseInt((n = Math.abs(+n || 0).toFixed(c))) + "",
       j = i.length;
@@ -465,7 +465,7 @@
   }
 
   function setActions(opts) {
-    var hand = player.getHand();
+    let hand = player.getHand();
 
     if (!running) {
       $("#deal").prop("disabled", false);
@@ -500,7 +500,7 @@
   }
 
   function renderCard(ele, sender, type, item) {
-    var hand, i, card;
+    let hand, i, card;
 
     if (!item) {
       hand = sender.getHand();
@@ -511,7 +511,7 @@
       card = new Card(hand[1]);
     }
 
-    var rank = card.getRank(),
+    let rank = card.getRank(),
       suit = card.getSuit(),
       color = "red",
       posx = 402,
@@ -617,7 +617,7 @@
   }
 
   function getWinner() {
-    var phand = player.getHand(),
+    let phand = player.getHand(),
       dhand = dealer.getHand(),
       pscore = player.getScore(),
       dscore = dealer.getScore(),
@@ -713,7 +713,7 @@
   }
 
   $("#deal").on("click", function () {
-    var cash = parseInt(player.getCash());
+    let cash = parseInt(player.getCash());
 
     $("#alert").fadeOut();
 
