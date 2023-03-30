@@ -1,36 +1,130 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+div[id*="pcard"] .popover {
+  left: -95px !important;
+}
+div[id*="dcard"] .popover {
+  left: -105px !important;
 }
 
 body {
-  background: rgb(102, 1, 1);
+  background: rgb(5, 5, 5);
 }
 
-#container {
+#wrapper {
   margin: 0 auto;
+  max-width: 1000px;
+}
+
+h3 {
+  margin: 5px 0;
+  text-align: center;
 }
 
 #game {
   background: transparent url("unlv_background.JPG") 0 0 no-repeat;
   border-radius: 5px;
   color: #333;
-  background-position: center;
-  background-size: cover;
+  font: 14px/17px Helvetica, Arial, Verdana, sans-serif;
   height: 100vh;
   width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
+}
+
+div#dscore {
+  position: absolute;
+  bottom: 30px;
+}
+
+div#pscore {
+  position: absolute;
+  bottom: 15px;
+}
+
+div#phand,
+div#dhand {
+  font-weight: 700;
+  /*left: 50%;*/
+  position: absolute;
+  top: -122px;
+  white-space: nowrap;
+  width: 1000px;
+}
+
+div#phand {
+}
+
+div#dhand {
+}
+
+div[class*="card"] {
+  background: #fff;
+  border: 6px solid #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 1px #000;
+  display: inline-block;
+  height: 150px;
+  margin: 0 5px;
+  position: absolute;
+  right: 0;
+  width: 100px;
+}
+
+.down {
+  background: #b20000 url("unlv-rebels-60x60.png") center center no-repeat !important;
+  height: 50px;
+}
+
+span.pos-0 {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+span.pos-1 {
+  bottom: 0;
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  position: absolute;
+  right: 0;
+  transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+}
+
+span.rank {
+  font-size: 18px;
+}
+
+span.suit {
+  font-size: 22px;
+}
+
+/* .black {
+  color: #000;
+}
+
+.red {
+  color: #f00;
+} */
+
+#result {
+  position: absolute;
+  bottom: 0;
 }
 
 #actions {
   position: absolute;
   bottom: 0;
-  left: 5%;
-  text-align-last: center;
-  padding: 1rem;
+  left: 17%;
+  text-align: center;
+  padding: 1rem 1rem;
   margin-bottom: 1rem;
+  border-radius: 5px;
   background-color: #690303;
+  border-style: solid;
+  border-color: rgb(247, 227, 141);
+  border-width: 1px;
 }
 
 input#wager {
@@ -42,35 +136,44 @@ input#wager {
 #money,
 #money:before {
   border-radius: 5px;
-  height: auto;
-  position: absolute;
-  right: 0;
   top: 0;
-  width: 250px;
-  padding: 7px;
-}
-#money {
-  border: 2px solid #e7d779;
+  height: 55px;
+  padding: 8px;
+  position: absolute;
+  right: 15;
+  width: 200px;
+  margin-top: 40px;
+  margin-left: 40px;
 }
 
-#money:before {
-  background: #333;
-  content: " ";
+#money {
+  border: 1px solid rgb(247, 227, 141);
+  background: #690303;
+  content: "";
   opacity: 0.8;
-  height: 55px;
 }
 
 #cash,
 #bank {
   color: #fff;
+  font: 700 18px/20px Helvetica, Arial, Verdana, sans-serif;
   margin: 12px 0;
-  font: 700 18px /20px Helvetica, Arial, Verdana, sans-serif;
-  z-index: 1;
   position: relative;
   text-shadow: 1px 1px #000;
+  z-index: 1;
 }
 #bet {
   color: rgb(247, 227, 141);
   font: 700 15px Helvetica, Arial, Verdana, sans-serif;
   padding: 10px;
+}
+
+#alert {
+  margin: 0 auto;
+  opacity: 0.95;
+  position: relative;
+  text-align: center;
+  top: 34.5%;
+  width: 500px;
+  z-index: 10;
 }
