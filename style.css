@@ -4,7 +4,6 @@ div[id*="pcard"] .popover {
 div[id*="dcard"] .popover {
   left: -105px !important;
 }
-
 body {
   background: rgb(5, 5, 5);
 }

@@ -10,7 +10,7 @@
   function Player() {
     let hand = [],
       wager = 0,
-      cash = 1000,
+      cash = 1000, //Buy-in initial amount. Can be increased if needed.
       bank = 0,
       ele = "",
       score = "";
@@ -294,7 +294,7 @@
 
       setTimeout(function () {
         player.stand();
-      }, 500);
+      }, 5000);
     } else {
       this.getHand();
     }
